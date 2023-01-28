@@ -1,0 +1,141 @@
+<script src="../assets/js/highchart/highcharts.js"></script>
+<script src="../assets/js/highchart/highcharts-more.js"></script>
+<script src="../assets/js/highchart/exporting.js"></script>
+<script src="../assets/js/highchart/export-data.js"></script>
+<script src="../assets/js/highchart/accessibility.js"></script>
+<style>
+ #container {
+    height: 400px;
+}
+
+.highcharts-figure,
+.highcharts-data-table table {
+    min-width: 320px;
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+</style>
+ <div style="background-color: white;">
+
+<div class="row" style="margin-top: 10px;" >
+  
+    <div class="col-md-4">
+        <img src="../img/p1.PNG" style="width: 100%; height: 100%;" />
+   </div>
+    <div class="col-md-4" > 
+        <img src="../img/p2.PNG" style="width: 100%; height: 100%;" />
+    </div>
+     <div class="col-md-4" > 
+        <div id="container"></div>
+    </div>
+</div>
+<div class="row" style="margin-top: 10px;" >
+<div class="col-md-4">
+   <img src="../img/doosung.png" style="width: 100%; height: 100%;" />
+</div>
+<div class="col-md-4" >
+   <img src="../img/p3.PNG" style="width: 100%; height: 100%;" />
+</div>
+</div>
+ </div>
+
+<script>
+  var colors = ['#E82C0C', '#008000', '#008000', '#008000','#008000','#008000','#008000', '#008000', '#008000','#008000','#008000','#008000', '#008000','#008000','#008000'];
+   const chart = Highcharts.chart('container', {
+    title: {
+        text: 'Báo cháy theo ZONE',
+        align: 'center'
+    },
+    subtitle: {
+        text: '',
+        align: 'left'
+    },
+    xAxis: {
+        categories: ['Z01', 'Z02', 'Z03', 'Z04', 'Z05', 'Z06', 'Z07', 'Z08', 'Z09', 'Z10', 'Z11', 'Z12','Z13','Z14','Z15']
+    },
+    colors:colors,
+    series: [{
+        type: 'column',
+        name: '',
+        colorByPoint: true,
+        data: [1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1,1,1,1],
+        showInLegend: false
+    }]
+});
+
+document.getElementById('plain').addEventListener('click', () => {
+    chart.update({
+        chart: {
+            inverted: false,
+            polar: false
+        },
+        subtitle: {
+            text: ''
+        }
+    });
+});
+
+document.getElementById('inverted').addEventListener('click', () => {
+    chart.update({
+        chart: {
+            inverted: true,
+            polar: false
+        },
+        subtitle: {
+            text: ''
+        }
+    });
+});
+
+document.getElementById('polar').addEventListener('click', () => {
+    chart.update({
+        chart: {
+            inverted: false,
+            polar: true
+        },
+        subtitle: {
+            text: ''
+        }
+    });
+});
+
+              
+</script>
